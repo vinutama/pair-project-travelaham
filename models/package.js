@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     quota: DataTypes.INTEGER
   }, {});
   Package.associate = function (models) {
-    // associations can be defined here
+    Package.belongsToMany(models.User)
   };
   return Package;
 };

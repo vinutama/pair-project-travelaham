@@ -1,10 +1,9 @@
 const Model = require('../models')
-const session = require('express-session')
+
 
 class UserController {
-
     static renderRegisterUser(req, res) {
-        res.render('user-register.ejs')
+        res.render('user-register.ejs', { errors: req.query.errors || null })
     }
     static registerUser(req, res) {
         let dataUser = {
@@ -19,7 +18,30 @@ class UserController {
                 res.redirect('/')
             })
             .catch(function (err) {
-                res.send(err)
+                res.redirect('/user/register' + '?errors=' + JSON.stringify(err))
+            })
+    }
+    static renderLoginUser(req, res) {
+        res.render('user-login.ejs')
+    }
+
+    static loginUser(req, res) {
+        let username = req.body.username
+        let password = req.body.password
+        Model.User.findOne({
+            where: {
+                username: username
+            }
+        })
+            .then(function (user) {
+                if (!user) {
+                    res.redirect('/user/login')
+                } else if (!user.validatePassword(password)) {
+                    res.redirect('/user/login')
+                } else {
+                    req.session.user = user.dataValues
+                    res.redirect('/')
+                }
             })
     }
 }
