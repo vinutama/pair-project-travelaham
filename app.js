@@ -5,15 +5,15 @@ const router = require('./routes')
 const session = require('express-session')
 
 app.use(express.urlencoded({ extended: false }))
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true
+
+}))
 
 app.use('/', router)
 
-app.use(session({
-    key: 'user_sid',
-    secret: 'somerandonstuffs',
-    resave: false,
-    saveUninitialized: false,
-}))
 
 app.listen(port, function () {
     console.log(`Running on port ${port}`)

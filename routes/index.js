@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const packageRouter = require('./package')
 const userRouter = require('./user')
+
 router.get('/', function (req, res) {
     res.render('home.ejs')
 })

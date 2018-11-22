@@ -52,7 +52,7 @@ module.exports = (sequelize, DataTypes) => {
           msg: `Password must be filled!`
         },
         len: {
-          args: [8, 100],
+          args: [5, 100],
           msg: `Minimum input password 8 characters!`
         }
       }
@@ -95,10 +95,15 @@ module.exports = (sequelize, DataTypes) => {
       }
     });
   User.associate = function (models) {
-    // User.belongsToMany(models.Package, { through: models.PackageUser })
+    User.belongsToMany(models.Package, { through: models.PackageUser })
   };
   User.prototype.validatePassword = function (password) {
     return bcrypt.compareSync(password, this.password)
+  }
+  User.prototype.notNull = function (user) {
+    if (!user) {
+      return `Wrong username / password`
+    }
   }
   return User;
 };

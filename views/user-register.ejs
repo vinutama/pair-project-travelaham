@@ -1,40 +1,59 @@
-
 <!doctype html>
 <html lang="en">
-  <head>
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 
-        crossorigin="anonymous">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Signin Template for Bootstrap</title>
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="../../../../favicon.ico">
 
-    <!-- Bootstrap core CSS -->
-    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>Signin Template for Bootstrap</title>
 
-    <!-- Custom styles for this template -->
-    <link href="signin.css" rel="stylesheet">
-  </head>
+  <!-- Bootstrap core CSS -->
+  <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <body class="text-center row justify-content-center">
-    <form class="form-signin " method="POST" action="/user/register">
-      <img class="mb-4" src="https://cdn.evbuc.com/images/30232287/185198540134/2/logo.png" alt="avatar" width="100" height="100" style="border-radius:75%">
-      <h2 class="w-20 text-center">Register User</h2>
+  <!-- Custom styles for this template -->
+  <link href="signin.css" rel="stylesheet">
+  <br>
+  <br>
+  <% if(errors){%>
+    <% JSON.parse(errors).errors.forEach(function(err){%>
+      <span class="has-text-error alert alert-danger col-md-4 centered">
+        <%=err.message%>
+      </span>
       <br>
-      <label for="inputEmail" class="sr-only">Email address</label>
-      <input type="email" id="inputEmail" class="form-signin" placeholder="Email address" required autofocus><br>
-      <label for="inputPassword" class="sr-only">Password</label>
-      <input type="password" id="inputPassword" class="form-signin" placeholder="Password" required>
-      <div class="checkbox mb-2">
-        <label>
-          <input type="checkbox" value="remember-me"> Remember me
-        </label>
-      </div>
-      <button class="btn btn-lg btn-primary " type="submit">Sign in</button>
-      <p class=" mt-5 mb-3 text-muted">&copy; 2017-2018</p>
-    </form>
-  </body>
+      <br>
+
+      <%})%>
+        <%}%>
+</head>
+
+<body class="text-center">
+  <form class="form-signin" method="POST" action="/user/register">
+    <img class="mb-4" src="../../assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+    <h1 class="w-25 p-3 font-weight-normal text-center" style=""> Register</h1>
+    <label for="inputFullName" class="sr-only">Full Name</label>
+    <input type="text" id="inputFullName" class="form-signin" placeholder="Full Name" name="name" required>
+    <br>
+    <label for="inputEmail" class="sr-only">Email address</label>
+    <input type="email" id="inputEmail" class="form-signin" placeholder="Email address" name="email" required autofocus>
+    <br>
+    <label for="=userName" class="sr-only">Username</label>
+    <input type="text" id="userName" class="form-signin" placeholder="Username" name="username" required>
+    <br>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="inputPassword" class="form-signin" placeholder="Password" name="password" required>
+    <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" value="remember-me"> Remember me
+      </label>
+    </div>
+    <button class="btn btn-lg btn-primary " type="submit">Register</button>
+    <p class=" mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+  </form>
+</body>
+
 </html>
