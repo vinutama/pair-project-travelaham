@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/vinutama/pair-project-travelaham#readme",
   "dependencies": {
+    "bcrypt": "^3.0.2",
     "body-parser": "^1.18.3",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
