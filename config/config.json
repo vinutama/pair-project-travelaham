@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "postgres",
-    "password": "postgres",
-    "database": "travelahamDB",
+    "password": 12345,
+    "database": "pair-project-travelaham",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
