@@ -1,4 +1,5 @@
 const Model = require('../models')
+const getCurrency = require('../helpers/getCurrency')
 
 
 class UserController {
@@ -42,7 +43,7 @@ class UserController {
                 } else {
                     req.session.data = { name: user.name, username: user.username, email: user.email, balance: user.balance }
                     // console.log(req.session.data)
-                    res.redirect('/')
+                    res.redirect(`/user/profile/${req.session.data.username}`)
                 }
             })
             .catch(function (err) {
@@ -52,15 +53,14 @@ class UserController {
     static renderProfile(req, res) {
         Model.User.findOne({
             where: {
-                username: req.session.data.username
+                username: req.params.username
             }
         })
             .then(function (user) {
-                res.render('user-profile.ejs')
+                // console.log(user)
+                res.render('profile.ejs', { data: user, getCurrency: getCurrency })
+                // res.send(user)
             })
-    }
-    static userProfile(req, res) {
-
     }
 }
 

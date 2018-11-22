@@ -20,7 +20,48 @@
 </head>
 
 <body>
-    
+    <div class="container" style="font-size: 30px; color:black">
+        <h2>User</h2>
+        <table class="table" border="5">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Periode</th>
+                    <th>Quota</th>
+                    <th>Attendance List</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <%=data.name%>
+                    </td>
+                    <td>
+                        <%=getCurrency(data.price)%>
+                    </td>
+                    <td>
+                        <%=data.periode%>
+                    </td>
+                    <td>
+                        <%=data.quota%>
+                    </td>
+                    <td>
+                        ?
+                    </td>
+                    <td>
+                        <a href="/" class="btn btn-primary">
+                            Buy
+                        </a>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
 </body>
+<footer class="container">
+        <p>&copy; TRAVELAHAM 2018-2019</p>
+    </footer>
 
 </html>
