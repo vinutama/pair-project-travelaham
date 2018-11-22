@@ -19,10 +19,11 @@ class UserController {
             })
             .catch(function (err) {
                 res.redirect('/user/register' + '?errors=' + JSON.stringify(err))
+
             })
     }
     static renderLoginUser(req, res) {
-        res.render('user-login.ejs')
+        res.render('user-login.ejs', { errors: req.query.errors || null })
     }
 
     static loginUser(req, res) {
@@ -39,10 +40,27 @@ class UserController {
                 } else if (!user.validatePassword(password)) {
                     res.redirect('/user/login')
                 } else {
-                    req.session.user = user.dataValues
+                    req.session.data = { name: user.name, username: user.username, email: user.email, balance: user.balance }
+                    // console.log(req.session.data)
                     res.redirect('/')
                 }
             })
+            .catch(function (err) {
+                res.redirect('/user/login' + '?errors=' + JSON.stringify(err))
+            })
+    }
+    static renderProfile(req, res) {
+        Model.User.findOne({
+            where: {
+                username: req.session.data.username
+            }
+        })
+            .then(function (user) {
+                res.render('user-profile.ejs')
+            })
+    }
+    static userProfile(req, res) {
+
     }
 }
 
