@@ -95,7 +95,7 @@ module.exports = (sequelize, DataTypes) => {
       }
     });
   User.associate = function (models) {
-    User.belongsToMany(models.Package, { through: models.PackageUser })
+    // User.belongsToMany(models.Package, { through: models.PackageUser })
   };
   User.prototype.validatePassword = function (password) {
     return bcrypt.compareSync(password, this.password)

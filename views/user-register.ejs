@@ -19,15 +19,16 @@
     <link href="signin.css" rel="stylesheet">
   </head>
 
-  <body class="text-center">
-    <form class="form-signin" method="POST" action="/user/register">
-      <img class="mb-4" src="../../assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-      <h1 class="w-25 p-3 font-weight-normal text-center"style="" > Register</h1>
+  <body class="text-center row justify-content-center">
+    <form class="form-signin " method="POST" action="/user/register">
+      <img class="mb-4" src="https://cdn.evbuc.com/images/30232287/185198540134/2/logo.png" alt="avatar" width="100" height="100" style="border-radius:75%">
+      <h2 class="w-20 text-center">Register User</h2>
+      <br>
       <label for="inputEmail" class="sr-only">Email address</label>
       <input type="email" id="inputEmail" class="form-signin" placeholder="Email address" required autofocus><br>
       <label for="inputPassword" class="sr-only">Password</label>
       <input type="password" id="inputPassword" class="form-signin" placeholder="Password" required>
-      <div class="checkbox mb-3">
+      <div class="checkbox mb-2">
         <label>
           <input type="checkbox" value="remember-me"> Remember me
         </label>
