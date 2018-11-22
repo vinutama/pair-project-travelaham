@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     quota: DataTypes.INTEGER
   }, {});
   Package.associate = function (models) {
-    Package.belongsToMany(models.User)
+    Package.belongsToMany(models.User, { through: models.PackageUser })
   };
   return Package;
 };
