@@ -5,8 +5,9 @@ module.exports = (sequelize, DataTypes) => {
     UserId: DataTypes.INTEGER,
     point: DataTypes.INTEGER
   }, {});
-  PackageUser.associate = function(models) {
-    // associations can be defined here
+  PackageUser.associate = function (models) {
+    PackageUser.belongsTo(models.Package)
+    PackageUser.belongsTo(models.User)
   };
   return PackageUser;
 };
